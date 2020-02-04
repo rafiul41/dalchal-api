@@ -9,9 +9,20 @@ router.get('/categories', (req, res) => {
         res.json(data)
       })
       .catch(err => {
-        console.log(err);
+        res.json(err);
       })
   }
 );
+
+router.post('/categories', (req, res) => {
+  return categoryModel
+    .create(req.body)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+});
 
 module.exports = router;

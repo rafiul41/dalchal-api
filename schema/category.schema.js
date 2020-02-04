@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 module.exports = {
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+    index: true
+  },
   background: String,
   subCategories: [{
     type: mongoose.Schema.Types.ObjectId,
