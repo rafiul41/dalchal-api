@@ -1,10 +1,10 @@
-const categoryModel = require('./../model/category.model');
+const categoryService = require('./../services/category.service');
 const express = require('express');
 const router = express.Router();
 
 router.get('/categories', (req, res) => {
-    return categoryModel
-      .find()
+    return categoryService
+      .getAllCategories()
       .then(data => {
         res.json(data)
       })
@@ -15,8 +15,8 @@ router.get('/categories', (req, res) => {
 );
 
 router.post('/categories', (req, res) => {
-  return categoryModel
-    .create(req.body)
+  return categoryService
+    .addCategory(req.body)
     .then(data => {
       res.json(data);
     })

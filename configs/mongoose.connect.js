@@ -12,8 +12,7 @@ module.exports = () => {
     .then(() => {
       console.log('Database Connection is established successfully. :D');
     })
-    .catch(err => {
-      console.log(err);
+    .catch(() => {
       console.log('Database connection is not established !! :(');
     });
 };
