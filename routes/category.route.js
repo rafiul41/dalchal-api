@@ -1,4 +1,5 @@
-const categoryService = require('./../services/category.service');
+const CategoryService = require('./../services/category.service');
+const categoryService = new CategoryService();
 const express = require('express');
 const router = express.Router();
 
