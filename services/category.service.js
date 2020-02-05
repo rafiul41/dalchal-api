@@ -2,12 +2,16 @@ const categoryModel = require('../models/category.model');
 
 class CategoryService {
   async populateSubCategories(category) {
-    const populatedCategory = await categoryModel.populate(category, {path: 'subCategories'});
-    const promises = [];
-    populatedCategory._doc.subCategories.forEach(async subCategory => {
-      promises.push(this.populateSubCategories(subCategory));
-    });
-    await Promise.all(promises);
+    try {
+      const populatedCategory = await categoryModel.populate(category, {path: 'subCategories'});
+      const promises = [];
+      populatedCategory._doc.subCategories.forEach(async subCategory => {
+        promises.push(this.populateSubCategories(subCategory));
+      });
+      await Promise.all(promises);
+    } catch(err) {
+      return Promise.reject(err);
+    }
   }
 
   getAllCategories() {
