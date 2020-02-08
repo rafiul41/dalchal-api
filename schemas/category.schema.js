@@ -6,6 +6,11 @@ module.exports = {
     unique: true,
     index: true
   },
+  url: {
+    type: String,
+    unique: true,
+    index: true
+  },
   background: String,
   subCategories: [{
     type: mongoose.Schema.Types.ObjectId,
