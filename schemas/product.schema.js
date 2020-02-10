@@ -14,5 +14,6 @@ module.exports = {
     index: true,
     unique: true
   },
-  cost: Number
+  cost: Number,
+  weight: String
 };
