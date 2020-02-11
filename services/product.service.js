@@ -22,6 +22,22 @@ class ProductService {
         return Promise.reject(err);
       })
   }
+
+  searchProduct(searchString) {
+    return productModel
+      .find({
+        name: {
+          $regex: '.*' + searchString + '.*',
+          $options: 'i'
+        }
+      })
+      .then(data => {
+        return Promise.resolve(data);
+      })
+      .catch(err => {
+        return Promise.reject(err);
+      })
+  }
 }
 
 module.exports = ProductService;

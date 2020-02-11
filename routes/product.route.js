@@ -27,4 +27,15 @@ router.post('/product', (req, res) => {
     })
 });
 
+router.get('/product/search', (req, res) => {
+  return productService
+    .searchProduct(req.query.searchString)
+    .then(data => {
+      res.json(util.formatSuccessResponse(data))
+    })
+    .catch(err => {
+      res.json(util.formatErrorResponse(err));
+    })
+});
+
 module.exports = router;
