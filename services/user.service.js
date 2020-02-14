@@ -6,14 +6,14 @@ class UserService {
     return userModel
       .findOne({mobileNumber: body.mobileNumber})
       .then(user => {
-        if(!user) {
-          return  Promise.reject({message: "User not found"});
+        if (!user) {
+          return Promise.reject({message: "User not found"});
         }
         if (user._doc.password !== body.password) {
           return Promise.reject({message: "Password doesn't match"});
         }
         const token = jwt.sign(user._doc, 'secretKey');
-        return Promise.resolve({token});
+        return Promise.resolve({token, user: user._doc});
       })
       .then(data => {
         return Promise.resolve(data);
