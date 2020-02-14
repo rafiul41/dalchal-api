@@ -28,4 +28,15 @@ router.post('/user/register', (req, res) => {
   }
 );
 
+router.get('/user/:mobileNumber', (req, res) => {
+  return userService
+    .getUser(req.params.mobileNumber)
+    .then(data => {
+      res.json(util.formatSuccessResponse(data))
+    })
+    .catch(err => {
+      res.json(util.formatErrorResponse(err));
+    })
+});
+
 module.exports = router;

@@ -33,6 +33,17 @@ class UserService {
         return Promise.reject(err);
       })
   }
+
+  getUser(mobileNumber) {
+    return userModel
+      .findOne({mobileNumber})
+      .then(data => {
+        return Promise.resolve(data._doc);
+      })
+      .catch(err => {
+        return Promise.reject(err);
+      })
+  }
 }
 
 module.exports = UserService;
