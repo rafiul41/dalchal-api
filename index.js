@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const util = require('./helpers/util');
+const passport = require('passport');
 
 const app = express();
 const port = process.env.PORT;
@@ -15,6 +16,11 @@ app.listen(port, () => {
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./configs/passport')(passport);
 
 app.use('/api', routes);
 

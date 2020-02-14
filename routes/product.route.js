@@ -3,8 +3,9 @@ const productService = new ProductService();
 const express = require('express');
 const router = express.Router();
 const util = require('./../helpers/util');
+const passport = require('passport');
 
-router.get('/product', (req, res) => {
+router.get('/product', passport.authenticate('jwt', {session: false}), (req, res) => {
     return productService
       .getProductsOfCategory(req.query.categoryId)
       .then(data => {
