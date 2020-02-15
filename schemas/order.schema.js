@@ -9,5 +9,6 @@ module.exports = {
     ref: 'User'
   },
   cart: Object,
-  totalCost: Number
+  totalCost: Number,
+  discount: Number
 };
