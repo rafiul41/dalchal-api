@@ -1,8 +1,8 @@
-const productModel = require('../models/product.model');
+const ProductModel = require('../models/product.model');
 
 class ProductService {
   getProductsOfCategory(category) {
-    return productModel
+    return ProductModel
       .find({category})
       .then(data => {
         return Promise.resolve(data);
@@ -13,7 +13,7 @@ class ProductService {
   }
 
   addProduct(body) {
-    return productModel
+    return ProductModel
       .create(body)
       .then(data => {
         return Promise.resolve(data);
@@ -24,7 +24,7 @@ class ProductService {
   }
 
   searchProduct(searchString) {
-    return productModel
+    return ProductModel
       .find({
         name: {
           $regex: '.*' + searchString + '.*',

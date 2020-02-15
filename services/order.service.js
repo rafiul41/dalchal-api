@@ -1,8 +1,8 @@
-const orderModel = require('../models/order.model');
+const OrderModel = require('../models/order.model');
 
 class OrderService {
   addOrder(order) {
-    return orderModel
+    return OrderModel
       .create(order)
       .then(data => {
         return Promise.resolve(data);
@@ -13,7 +13,7 @@ class OrderService {
   }
 
   getUserOrders(userId) {
-    return orderModel
+    return OrderModel
       .find({userId})
       .then(data => {
         return Promise.resolve(data);

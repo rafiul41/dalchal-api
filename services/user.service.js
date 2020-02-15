@@ -1,9 +1,9 @@
-const userModel = require('../models/user.model');
+const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 
 class UserService {
   authenticate(body) {
-    return userModel
+    return UserModel
       .findOne({mobileNumber: body.mobileNumber})
       .then(user => {
         if (!user) {
@@ -24,7 +24,7 @@ class UserService {
   }
 
   register(user) {
-    return userModel
+    return UserModel
       .create(user)
       .then(data => {
         return Promise.resolve(data);
@@ -35,7 +35,7 @@ class UserService {
   }
 
   getUser(mobileNumber) {
-    return userModel
+    return UserModel
       .findOne({mobileNumber})
       .then(data => {
         return Promise.resolve(data._doc);
