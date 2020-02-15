@@ -8,5 +8,6 @@ module.exports = {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  cart: Object
+  cart: Object,
+  totalCost: Number
 };
